@@ -56,3 +56,10 @@ repos:
         name: Check VSCode extensions against devcontainer whitelist
         entry: bash check-extensions.sh
         language: system
+
+  -repo: locak
+    hooks:
+      - id: check-code-coverage
+        name: Check test code coverage
+        entry: bash check-coverage.sh
+        language: system
