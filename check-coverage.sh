@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 set -euo pipefail
 
 poetry run pytest -n auto \
@@ -7,18 +7,18 @@ poetry run pytest -n auto \
   --cov-fail-under=50 \
   tests/ | tee pytest_output.log
 
-COVERAGE=$(grep -Eo 'TOTAL\s+[0-9]+\s+[0-9]+\s+[0-9]+\s+[0-9]+\s+([0-9]+%)' pytest_output.log | tail -1 | grep -Eo '[0-9]+')
+# Handles format "TOTAL 45 5 89%"
+COVERAGE=$(grep -Eo 'TOTAL\s+.*[0-9]+%' pytest_output.log | tail -1 | grep -Eo '[0-9]+%' | tr -d '%')
 
-if [ -z "$COVERAGE" ]; then
-  echo "Error: Could not extract coverage percentage."
+if [ -z "${COVERAGE:-}" ]; then
+  echo "Could not parse coverage percentage from pytest_output.log"
   exit 1
 fi
 
-cat <<EOF > coverage.json
+cat <<EOF > coverage_summary.json
 {
   "coverage": $COVERAGE
 }
 EOF
 
-echo "Coverage: $COVERAGE%"
-echo "Saved to coverage.json"
+echo "Saved to coverage_summary.json"
