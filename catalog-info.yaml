@@ -1,0 +1,30 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: joe-coverage-test
+  description: "test of code coverage check"
+  tags:
+    - python
+    - etl
+  annotations:
+    backstage.io/techdocs-ref: dir:.
+    github.com/project-slug: ONS-Innovation/joe-coverage-test
+    backstage.io/source-template: "python-rap-template"
+  links:
+    - url: https://github.com/ONS-Innovation/joe-coverage-test/codespaces
+      title: Open Development Environment (Codespaces)
+      icon: scaffolder
+    - url: https://officenationalstatistics.sharepoint.com/sites/ONS_DDaT_Communities/SitePages/SE%20-%20Principles,%20Policies,%20Guidelines%20&%20more.aspx?csf=1&web=1&share=EQI8qpmdcZ1MvVA__6yKAtgBkWCMhU-pty-SBeAs1KVAEQ&e=jlgchY
+      title: Policies & Guidelines  
+      icon: catalog
+    - url: https://app.pluralsight.com/channels/details/c4f16af4-8278-440c-9ae8-fc9e95f1f34d
+      title: Learning Pathway  
+      icon: help
+    - url: vscode://vscode.git/clone?url=https://github.com/ONS-Innovation/joe-coverage-test.git
+      title: Open in Local Visual Studio Code
+      icon: scaffolder
+spec:
+  type: module
+  lifecycle: experimental
+  owner: "user:default/joepercival"
+  system: "system:default/trial-team"
